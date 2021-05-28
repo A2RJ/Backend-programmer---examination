@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="shortcut icon" href="./assets/favicon.ico" />
+    <link rel="stylesheet" href="./assets/css/pizza.css" />
+
+    <title>Ardiansyah_Putra_Examination_PT.Timedoor_Indonesia</title>
+  </head>
+  <body>
+    <div style="width: 60%; margin: auto">
+      <!-- Pizza Section -->
+      <div class="pizza">
+        <h4>Pizza</h4>
+        <form action="">
+          <ul>
+            <li>
+              <div class="card">
+                <img
+                  src="./assets/colorful-round-tasty-pizza/10219.jpg"
+                  alt="Pizza"
+                  style="width: 100%"
+                />
+                <div class="container">
+                  <h4><b>Pizza 1</b></h4>
+                  <p>$8</p>
+                  <input type="radio" name="pizza" value="8" />
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="card">
+                <img
+                  src="./assets/colorful-round-tasty-pizza/10219.jpg"
+                  alt="Pizza"
+                  style="width: 100%"
+                />
+                <div class="container">
+                  <h4 for="option1"><b>Pizza 2</b></h4>
+                  <p>$10</p>
+                  <input type="radio" id="option1" name="pizza" value="10" />
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="card">
+                <img
+                  src="./assets/colorful-round-tasty-pizza/10219.jpg"
+                  alt="Pizza"
+                  style="width: 100%"
+                />
+                <div class="container">
+                  <h4><b>Pizza 3</b></h4>
+                  <p>$12</p>
+                  <input type="radio" name="pizza" value="12" />
+                </div>
+              </div>
+            </li>
+          </ul>
+        </form>
+      </div>
+      <!-- End Pizza Section -->
+
+      <!-- Size Section -->
+      <div class="size">
+        <h4>Size</h4>
+        <form action="">
+          <ul class="flex-gap" style="margin: auto">
+            <li>
+              <input type="radio" id="small" name="size" value="-1" />
+              <label for="small">Small</label>
+            </li>
+            <li>
+              <input type="radio" id="medium" name="size" value="0" checked />
+              <label for="medium">Medium</label>
+            </li>
+            <li>
+              <input type="radio" id="large" name="size" value="2" />
+              <label for="large">Large</label>
+            </li>
+          </ul>
+        </form>
+      </div>
+      <!-- End Size Section -->
+
+      <!-- Topping Section -->
+      <div class="toppings">
+        <h4>Toppings</h4>
+        <div>
+          <form action="">
+            <ul class="flex-gap center">
+              <li>
+                <input
+                  type="checkbox"
+                  id="avocado"
+                  name="topping"
+                  value="1"
+                  data-topping-pizza1="pizza1"
+                />
+                <label for="avocado">Avocado</label>
+              </li>
+              <li>
+                <input
+                  type="checkbox"
+                  id="lobster"
+                  name="topping"
+                  value="2"
+                  data-topping-pizza2="pizza2"
+                />
+                <label for="lobster">Lobster</label>
+              </li>
+              <li>
+                <input
+                  type="checkbox"
+                  id="bacon"
+                  name="topping"
+                  value="3"
+                  data-topping-pizza2="pizza2"
+                  data-topping-pizza3="pizza3"
+                />
+                <label for="bacon">Bacon</label>
+              </li>
+
+              <li>
+                <input
+                  type="checkbox"
+                  id="broccoli"
+                  name="topping"
+                  value="1"
+                  data-topping-pizza1="pizza1"
+                  data-topping-pizza2="pizza2"
+                  data-topping-pizza3="pizza3"
+                />
+                <label for="broccoli">Broccoli</label>
+              </li>
+              <li>
+                <input
+                  type="checkbox"
+                  id="oyster"
+                  name="topping"
+                  value="2"
+                  data-topping-pizza2="pizza2"
+                />
+                <label for="oyster">Oyster</label>
+              </li>
+              <li>
+                <input
+                  type="checkbox"
+                  id="duck"
+                  name="topping"
+                  value="3"
+                  data-topping-pizza3="pizza3"
+                />
+                <label for="duck">Duck</label>
+              </li>
+              <li>
+                <input
+                  type="checkbox"
+                  id="onions"
+                  name="topping"
+                  value="1"
+                  data-topping-pizza1="pizza1"
+                  data-topping-pizza2="pizza2"
+                  data-topping-pizza3="pizza3"
+                />
+                <label for="onions">Onions</label>
+              </li>
+              <li>
+                <input
+                  type="checkbox"
+                  id="salmon"
+                  name="topping"
+                  value="2"
+                  data-topping-pizza2="pizza2"
+                />
+                <label for="salmon">Salmon</label>
+              </li>
+              <li>
+                <input
+                  type="checkbox"
+                  id="ham"
+                  name="topping"
+                  value="3"
+                  data-topping-pizza1="pizza1"
+                  data-topping-pizza2="pizza2"
+                  data-topping-pizza3="pizza3"
+                />
+                <label for="ham">Ham</label>
+              </li>
+              <li>
+                <input
+                  type="checkbox"
+                  id="zucchini"
+                  name="topping"
+                  value="1"
+                  data-topping-pizza1="pizza1"
+                  data-topping-pizza2="pizza2"
+                  data-topping-pizza3="pizza3"
+                />
+                <label for="zucchini">Zucchini</label>
+              </li>
+              <li>
+                <input
+                  type="checkbox"
+                  id="tuna"
+                  name="topping"
+                  value="2"
+                  data-topping-pizza1="pizza1"
+                  data-topping-pizza3="pizza3"
+                />
+                <label for="tuna">Tuna</label>
+              </li>
+              <li>
+                <input
+                  type="checkbox"
+                  id="sausage"
+                  name="topping"
+                  value="3"
+                  data-topping-pizza3="pizza3"
+                />
+                <label for="sausage">Sausage</label>
+              </li>
+            </ul>
+          </form>
+        </div>
+        <!-- End Topping Section -->
+
+        <!-- Price Section -->
+        <div>
+          <h4>Price</h4>
+          <p id="prices">$0</p>
+        </div>
+        <!-- End Price Section -->
+      </div>
+    </div>
+
+    <script src="./assets/js/pizza.js"></script>
+  </body>
+</html>
