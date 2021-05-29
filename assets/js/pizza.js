@@ -1,11 +1,18 @@
 document.addEventListener("DOMContentLoaded", function (event) {
-    // Pizza section
+    
+    // Get element
     const pizza = document.getElementsByName("pizza");
+    const size = document.getElementsByName("size");
+    const toppings = document.getElementsByName("topping");
+    
+    // Set default value
     var pizzaValue = 0;
-
+    var sizeValue = 0;
+    var toppingValue = 0;
+    
+    // Pizza section
     if (pizzaValue  == 0) {
-        var checkboxes = document.getElementsByName("topping");
-        for (var checkbox of checkboxes) {
+        for (var checkbox of toppings) {
             checkbox.setAttribute("disabled", "");
         }
     }
@@ -26,22 +33,19 @@ document.addEventListener("DOMContentLoaded", function (event) {
     }
 
     function disableChekbox(pizza) {
-        var checkboxes = document.getElementsByName("topping");
-        for (var checkbox of checkboxes) {
+        for (var checkbox of toppings) {
             if (checkbox.hasAttribute(pizza)) {
                 checkbox.removeAttribute("disabled");
             } else {
                 checkbox.checked = false;
                 checkbox.setAttribute("disabled", "");
             }
-            getValueCheckboxes();
+            getValuetoppings();
         }
         prices();
     }
 
     // Size section
-    const size = document.getElementsByName("size");
-    var sizeValue = 0;
     for (var i = 0; i < size.length; i++) {
         size[i].addEventListener("click", getSizeValue, false);
     }
@@ -51,21 +55,20 @@ document.addEventListener("DOMContentLoaded", function (event) {
         prices();
     }
 
-    // Topping section
-    const topping = document.getElementsByName("topping");
-    var toppingValue = 0;
-    for (var i = 0; i < topping.length; i++) {
-        topping[i].addEventListener("click", getValueCheckboxes, false);
+    // Toppings section
+    for (var i = 0; i < toppings.length; i++) {
+        toppings[i].addEventListener("click", getValuetoppings, false);
     }
 
-    function getValueCheckboxes() {
-        var a = Array.from(topping)
+    function getValuetoppings() {
+        var a = Array.from(toppings)
             .filter((checkbox) => checkbox.checked)
             .map((checkbox) => parseFloat(checkbox.value));
         toppingValue = a.reduce((acc, value) => acc + value, 0);
         prices();
     }
 
+    // Prices section
     function prices() {
         var total =
             parseFloat(pizzaValue) +
