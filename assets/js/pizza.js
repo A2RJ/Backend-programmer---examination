@@ -1,79 +1,71 @@
-document.addEventListener("DOMContentLoaded", function (event) {
-    
+document.addEventListener("DOMContentLoaded", () => {
+
     // Get element
-    const pizza = document.getElementsByName("pizza");
-    const size = document.getElementsByName("size");
-    const toppings = document.getElementsByName("topping");
-    
+    const pizza = document.getElementsByName("pizza")
+    const size = document.getElementsByName("size")
+    const toppings = document.getElementsByName("topping")
+
     // Set default value
-    var pizzaValue = 0;
-    var sizeValue = 0;
-    var toppingValue = 0;
-    
-    // Pizza section
-    if (pizzaValue  == 0) {
-        for (var checkbox of toppings) {
-            checkbox.setAttribute("disabled", "");
-        }
+    var price = {
+        pizzaPrice: 0,
+        sizePrice: 0,
+        toppingPrice: 0
     }
 
-    for (var i = 0; i < pizza.length; i++) {
-        pizza[i].addEventListener("click", getPizzaValue, false);
-    }
-
-    function getPizzaValue(e) {
-        pizzaValue = e.target.value;
-        if (pizzaValue == "8") {
-            disableChekbox("data-topping-pizza1");
-        } else if (pizzaValue == "10") {
-            disableChekbox("data-topping-pizza2");
-        } else if (pizzaValue == "12") {
-            disableChekbox("data-topping-pizza3");
-        }
-    }
-
-    function disableChekbox(pizza) {
-        for (var checkbox of toppings) {
-            if (checkbox.hasAttribute(pizza)) {
-                checkbox.removeAttribute("disabled");
+    // List of functions
+    const enableChekbox = (pizza) => {
+        toppings.forEach((tp) => {
+            if (tp.hasAttribute(pizza)) {
+                tp.removeAttribute("disabled")
             } else {
-                checkbox.checked = false;
-                checkbox.setAttribute("disabled", "");
+                tp.checked = false
+                tp.setAttribute("disabled", "")
             }
-            getValuetoppings();
-        }
-        prices();
+            getValuetoppings()
+        })
+        prices()
     }
+
+    const getValuetoppings = () => {
+        var toppingsPrice = Array.from(toppings)
+            .filter((checkbox) => checkbox.checked)
+            .map((checkbox) => parseFloat(checkbox.value))
+        price.toppingPrice = toppingsPrice.reduce((acc, value) => acc + value, 0)
+        prices()
+    }
+
+    const prices = () => {
+        var totalPay =
+            parseFloat(price.pizzaPrice) +
+            parseFloat(price.sizePrice) +
+            parseFloat(price.toppingPrice)
+        document.getElementById("prices").innerText = "$" + totalPay
+    }
+
+    // Pizza section
+    pizza.forEach((pz) => {
+        pz.addEventListener("click", (e) => {
+            price.pizzaPrice = e.target.value
+            if (price.pizzaPrice == "8") {
+                enableChekbox("data-topping-pizza1")
+            } else if (price.pizzaPrice == "10") {
+                enableChekbox("data-topping-pizza2")
+            } else if (price.pizzaPrice == "12") {
+                enableChekbox("data-topping-pizza3")
+            }
+        })
+    })
 
     // Size section
-    for (var i = 0; i < size.length; i++) {
-        size[i].addEventListener("click", getSizeValue, false);
-    }
-
-    function getSizeValue(e) {
-        sizeValue = e.target.value;
-        prices();
-    }
+    size.forEach((sz) => {
+        sz.addEventListener("click", (e) => {
+            price.sizePrice = e.target.value
+            prices()
+        })
+    })
 
     // Toppings section
-    for (var i = 0; i < toppings.length; i++) {
-        toppings[i].addEventListener("click", getValuetoppings, false);
-    }
-
-    function getValuetoppings() {
-        var a = Array.from(toppings)
-            .filter((checkbox) => checkbox.checked)
-            .map((checkbox) => parseFloat(checkbox.value));
-        toppingValue = a.reduce((acc, value) => acc + value, 0);
-        prices();
-    }
-
-    // Prices section
-    function prices() {
-        var total =
-            parseFloat(pizzaValue) +
-            parseFloat(sizeValue) +
-            parseFloat(toppingValue);
-        document.getElementById("prices").innerText = "$" + total;
-    }
-});
+    toppings.forEach((tp) => {
+        tp.addEventListener("click", getValuetoppings)
+    })
+})
